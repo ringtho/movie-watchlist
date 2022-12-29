@@ -1,4 +1,35 @@
 html, body {
     margin: 0;
     padding: 0;
+    font-family: 'Inter', sans-serif;
+    color: #FFF;
 }
+
+h1, h4 {
+    margin: 0;
+}
+
+header > h1 {
+    font-size: 43px;
+    font-weight: 800;
+}
+
+header > h4 {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+header {
+    display: flex;
+    padding: 42px;
+    height: 208px;
+    background-image: url("/images/omdb.png");
+    filter: brightness(20%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    align-items: center;
+    justify-content: space-between;
+    
+} 
