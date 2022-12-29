@@ -9,8 +9,12 @@ html, body {
     box-sizing: border-box;
 }
 
-h1, h4 {
+h1, h4, p{
     margin: 0;
+}
+
+h3 {
+    margin-bottom: 0;
 }
 
 h1 {
@@ -21,6 +25,12 @@ h1 {
 h4 {
     font-weight: 700;
     font-size: 14px;
+}
+
+header,
+.header-text,
+main {
+    padding: 44px;
 }
 
 header {
@@ -40,7 +50,78 @@ header {
     display: flex;
     width: 100%;
     height: 208px;
-    padding: 42px;
     align-items: center;
     justify-content: space-between;
+    gap: 10px;
 }
+
+main {
+    background-color: #121212;
+}
+
+.movie-container {
+    display: flex;
+    gap: 21px;
+    padding: 21px 0;
+    border-bottom: 1.5px solid #2C2C2C;
+}
+
+.movie-img {
+    height: 147px;
+    min-width: 100px;
+}
+
+.movie-img > img {
+    width: 100%;
+    height: 100%;
+}
+
+.movie-heading {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.movie-title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.movie-rating {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.movie-details {
+    display: flex;
+    font-size: 12px;
+    font-weight: 400;
+    gap: 16px;
+}
+
+.movie-description {
+    font-size: 14px;
+    font-weight: 400;
+    color: #A5A5A5;
+}
+
+.movie-details,
+.movie-description {
+    margin-top: 8px;
+}
+
+.fa-star {
+    color: #FEC654;
+    font-size: 15px;
+}
+
+.fa-circle-plus {
+    margin-right: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.fa-circle-plus:hover {
+    color: #FEC654;
+}
+
