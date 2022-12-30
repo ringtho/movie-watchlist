@@ -9,6 +9,9 @@ html, body {
     box-sizing: border-box;
 }
 
+
+/* typography */
+
 h1, h4, p{
     margin: 0;
 }
@@ -27,6 +30,50 @@ h4 {
     font-size: 14px;
 }
 
+/* links */
+
+a {
+    text-decoration: none;
+    color: #FFF;
+}
+
+a:hover {
+    color: #FEC654;
+}
+
+.submit {
+    padding: 9px;
+    width: 20%;
+    min-width: 100px;
+    border-left: none;
+    cursor: pointer;
+    background-color: #4B4B4B;
+    color: #FFF;
+    border-radius: 0 6px 6px 0;
+}
+
+.input-search,
+.submit {
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    float: left;
+    height: 38px;
+}
+
+.add-remove-btn {
+    margin-right: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.add-remove-btn:focus,
+.add-remove-btn:hover {
+    color: #FEC654;
+}
+
+/* controls */
+
 header,
 .header-text,
 main {
@@ -38,7 +85,7 @@ header {
     height: 208px;
     width: 100%;
     background-image: url("/images/omdb.png");
-    filter: brightness(20%);
+    filter: brightness(40%);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -110,18 +157,37 @@ main {
     margin-top: 8px;
 }
 
+.search {
+    padding: 0 44px;
+    position: absolute;
+    margin-top: -17px;
+    width: 100%;
+}
+
+.search-form {
+    margin: 0;
+    width: 100%;
+}
+
+.input-search {
+    padding: 9px 13px 9px 40px;
+    width: 80%;
+    color: #A5A5A5;
+    background-color: #2E2E2F;
+    border-radius: 6px 0 0 6px;
+}
+
+/* icons */
+
 .fa-star {
     color: #FEC654;
     font-size: 15px;
 }
 
-.fa-circle-plus {
-    margin-right: 5px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.fa-circle-plus:hover {
-    color: #FEC654;
+.fa-magnifying-glass {
+    position: absolute;
+    color: #D1D5DB;
+    font-size: 20px;
+    padding: 9px 9px 9px 13px;
 }
 
