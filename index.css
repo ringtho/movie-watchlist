@@ -3,6 +3,7 @@ html, body {
     padding: 0;
     font-family: 'Inter', sans-serif;
     color: #FFF;
+    background-color: #121212;
 }
 
 * {
@@ -44,7 +45,6 @@ a:hover {
 .submit {
     padding: 9px;
     width: 20%;
-    min-width: 100px;
     border-left: none;
     cursor: pointer;
     background-color: #4B4B4B;
@@ -106,6 +106,60 @@ main {
     background-color: #121212;
 }
 
+.no-content {
+    height: calc(100vh - 208px);
+}
+
+.explore-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #2E2E2F;
+}
+
+.explore-container p {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.no-movies {
+    padding: 80px;
+    text-align: center;
+    color: #787878;
+}
+
+.explore-container i {
+    font-size: 70px;
+}
+
+/* empty watchlist */
+
+.empty-watchlist-text {
+    color: #787878;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.empty-watchlist {
+    display: flex;
+    gap: 8px;
+}
+
+.empty-watchlist i {
+    font-size: 18px;
+    color: #FFF;
+}
+
+.empty-watchlist p {
+    color: #FFF;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* movies present */
+
 .movie-container {
     display: flex;
     gap: 21px;
@@ -143,6 +197,7 @@ main {
     display: flex;
     font-size: 12px;
     font-weight: 400;
+    align-items: baseline;
     gap: 16px;
 }
 
@@ -159,7 +214,7 @@ main {
 
 .search {
     padding: 0 44px;
-    position: absolute;
+    position: relative;
     margin-top: -17px;
     width: 100%;
 }
@@ -189,5 +244,78 @@ main {
     color: #D1D5DB;
     font-size: 20px;
     padding: 9px 9px 9px 13px;
+}
+
+/* media querries */
+
+@media (max-width: 390px) {
+    .header-text h1 {
+        font-size: 22px;
+    }
+
+    .header-text h4 {
+        font-size: 10px;
+    } 
+
+    .movie-title {
+        font-size: 14px;
+        margin-top: 0;
+    }
+    .movie-details,
+    .movie-description {
+        font-size: 11px;
+    }
+
+    .movie-details {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .submit {
+        font-size: 12px;
+    }
+}
+
+@media (min-width:391px) and (max-width: 500px) {
+    .header-text h1 {
+        font-size: 30px;
+    }
+
+    .header-text h4{
+        font-size: 12px;
+    }
+
+    .movie-details,
+    .movie-description {
+        font-size: 11px;
+    }
+
+    .movie-details {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .submit {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 900px) {
+    .movie-container,
+    .header-text,
+    .search {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .header-text,
+    .search {
+        padding: 0;
+    }
+
+    .search {
+        margin-top: -17px
+    }
+
 }
 
