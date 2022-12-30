@@ -22,13 +22,13 @@ h3 {
 }
 
 h1 {
-    font-size: 43px;
+    font-size: 2.7rem;
     font-weight: 800;
 }
 
 h4 {
     font-weight: 700;
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 
 /* links */
@@ -55,7 +55,7 @@ a:hover {
 .input-search,
 .submit {
     border: none;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 500;
     float: left;
     height: 38px;
@@ -63,7 +63,7 @@ a:hover {
 
 .add-remove-btn {
     margin-right: 5px;
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
 }
 
@@ -120,7 +120,7 @@ main {
 }
 
 .explore-container p {
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 700;
 }
 
@@ -131,7 +131,7 @@ main {
 }
 
 .explore-container i {
-    font-size: 70px;
+    font-size: 4.375rem;
 }
 
 /* empty watchlist */
@@ -148,13 +148,13 @@ main {
 }
 
 .empty-watchlist i {
-    font-size: 18px;
+    font-size: 1.125rem;
     color: #FFF;
 }
 
 .empty-watchlist p {
     color: #FFF;
-    font-size: 14px;
+    font-size: 0.875rem;
     text-align: center;
 }
 
@@ -184,25 +184,25 @@ main {
 }
 
 .movie-title {
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 500;
 }
 
 .movie-rating {
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 400;
 }
 
 .movie-details {
     display: flex;
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 400;
     align-items: baseline;
     gap: 16px;
 }
 
 .movie-description {
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 400;
     color: #A5A5A5;
 }
@@ -236,13 +236,13 @@ main {
 
 .fa-star {
     color: #FEC654;
-    font-size: 15px;
+    font-size: 1rem;
 }
 
 .fa-magnifying-glass {
     position: absolute;
     color: #D1D5DB;
-    font-size: 20px;
+    font-size: 1.25rem;
     padding: 9px 9px 9px 13px;
 }
 
@@ -250,20 +250,20 @@ main {
 
 @media (max-width: 390px) {
     .header-text h1 {
-        font-size: 22px;
+        font-size: 1.375rem;
     }
 
     .header-text h4 {
-        font-size: 10px;
+        font-size: 0.625rem;
     } 
 
     .movie-title {
-        font-size: 14px;
+        font-size: 0.875rem;
         margin-top: 0;
     }
     .movie-details,
     .movie-description {
-        font-size: 11px;
+        font-size: 0.6875rem;
     }
 
     .movie-details {
@@ -272,22 +272,22 @@ main {
     }
 
     .submit {
-        font-size: 12px;
+        font-size: 0.75rem;
     }
 }
 
 @media (min-width:391px) and (max-width: 500px) {
     .header-text h1 {
-        font-size: 30px;
+        font-size: 1.875rem;
     }
 
     .header-text h4{
-        font-size: 12px;
+        font-size: 0.75rem;
     }
 
     .movie-details,
     .movie-description {
-        font-size: 11px;
+        font-size: 0.6875rem;
     }
 
     .movie-details {
@@ -296,7 +296,7 @@ main {
     }
 
     .submit {
-        font-size: 12px;
+        font-size: 0.75rem;
     }
 }
 
