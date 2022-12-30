@@ -80,8 +80,7 @@ a:hover {
 }
 
 .movie-title,
-.explore-container p,
-.empty-watchlist i {
+.explore-container p {
     font-size: 1.125rem;
 }
 
@@ -158,6 +157,7 @@ main {
 .movie-img {
     height: 147px;
     min-width: 100px;
+    max-width: 100px;
 }
 
 .movie-img > img {
@@ -240,6 +240,10 @@ main {
 .empty-watchlist-text {
     color: #787878;
     margin-bottom: 15px;
+}
+
+.empty-watchlist i {
+    font-size: 1.125rem;
 }
 
 .empty-watchlist {
