@@ -4,11 +4,13 @@ import {
 
 const mainContainer = document.getElementById("container")
 const watchlistContainer = document.getElementById("watchlist-container")
-// let watchlist = []
+
 let watchlist = JSON.parse(localStorage.getItem("movies"))
-// console.log(typeof(watchlist))
-// localStorage.setItem("movies", JSON.stringify(watchlist));
-// localStorage.clear()
+if (!watchlist){
+    let watchlist = []
+    localStorage.setItem("movies", JSON.stringify(watchlist));
+}
+
 
 document.addEventListener('click', function(e){
     e.preventDefault()
@@ -20,12 +22,16 @@ document.addEventListener('click', function(e){
         handleAddToWatchlistClick(e.target.dataset.id)
     }
 
+    if (e.target.id === "remove-btn"){
+        handleRemoveFromWatchlistClick(e.target.dataset.id)
+    }
+
     if (e.target.dataset.page){
         window.location.replace(`${e.target.dataset.page}.html`)
     }
 })
 
-async function handleSubmitBtnClick(){
+function handleSubmitBtnClick(){
     const searchText = document.getElementById('input-search').value
     let html = ``
     if(searchText) {
@@ -56,6 +62,14 @@ async function handleAddToWatchlistClick(id){
     const movie = await getMovieById(id)
     watchlist.push(movie)
     localStorage.setItem("movies", JSON.stringify(watchlist))
+}
+
+function handleRemoveFromWatchlistClick(id){
+    const filteredMovies = watchlist.filter(function(movie){
+        return movie.imdbID != id
+    }) 
+    localStorage.setItem("movies", JSON.stringify(filteredMovies))
+    location.reload()
 }
 
 async function getMovieById(id){
