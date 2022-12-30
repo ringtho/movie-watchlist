@@ -1,3 +1,7 @@
+import {
+    getMissingMovieHtml, getEmptyWatchlistHtml, getWatchlistHtml, getMovieHtml
+} from "/utils.js"
+
 const mainContainer = document.getElementById("container")
 const watchlistContainer = document.getElementById("watchlist-container")
 // let watchlist = []
@@ -21,7 +25,7 @@ document.addEventListener('click', function(e){
     }
 })
 
-function handleSubmitBtnClick(){
+async function handleSubmitBtnClick(){
     const searchText = document.getElementById('input-search').value
     let html = ``
     if(searchText) {
@@ -48,17 +52,18 @@ function handleSubmitBtnClick(){
     
 }
 
-function handleAddToWatchlistClick(id){
-    fetch(`http://www.omdbapi.com/?apikey=f379d678&i=${id}`)
-        .then(res => res.json())
-        .then(movie => {
-            watchlist.push(movie)
-            localStorage.setItem("movies", JSON.stringify(watchlist))
-        }) 
-    renderWatchlist() 
+async function handleAddToWatchlistClick(id){
+    const movie = await getMovieById(id)
+    watchlist.push(movie)
+    localStorage.setItem("movies", JSON.stringify(watchlist))
 }
 
-// console.log(watchlist)
+async function getMovieById(id){
+    const res = await fetch(`http://www.omdbapi.com/?apikey=f379d678&i=${id}`)
+    const data = await res.json()
+    return data
+}
+
 function renderWatchlist(){
     let html = ""
     if (watchlist.length){
@@ -66,95 +71,6 @@ function renderWatchlist(){
         watchlistContainer.innerHTML = html
     } else {
         watchlistContainer.innerHTML = getEmptyWatchlistHtml()
-    }
-    
-    
+    }  
 }
-
 renderWatchlist()
-
-// async function getMovieById(id){
-//     const res = await fetch(`http://www.omdbapi.com/?apikey=f379d678&i=${id}`)
-//     const data = await res.json()
-//     console.log(data.Title)
-// }
-
-// console.log(getMovieById("tt0107290"))
-
-
-function getMovieHtml(movie){
-    const rating = movie.Ratings[0].Value.slice(0,3)
-    return `
-        <section class="movie-container">
-            <div class="movie-img">
-                <img src="${movie.Poster}" alt="${movie.Title}">
-            </div>
-            <div class="movie-info">
-                <div class="movie-heading">
-                    <span><h3 class="movie-title">${movie.Title}</h3></span>
-                    <span><i class="fa-solid fa-star"></i></span>
-                    <span class="movie-rating">${rating}</span>
-                </div>
-                <div class="movie-details">
-                    <p>${movie.Runtime}</p>
-                    <p>${movie.Genre}</p>
-                    <p>
-                    <i class="fa-solid fa-circle-plus add-remove-btn" id="add-btn" data-id=${movie.imdbID}></i>Watchlist</p>
-                </div>
-                <div class="movie-description">
-                    <p>${movie.Plot}
-                    </p>
-                </div>
-            </div>
-        </section>
-        `
-}
-
-function getWatchlistHtml(movie){
-    const rating = movie.Ratings[0].Value.slice(0,3)
-    return `
-        <section class="movie-container">
-            <div class="movie-img">
-                <img src="${movie.Poster}" alt="${movie.Title}">
-            </div>
-            <div class="movie-info">
-                <div class="movie-heading">
-                    <span><h3 class="movie-title">${movie.Title}</h3></span>
-                    <span><i class="fa-solid fa-star"></i></span>
-                    <span class="movie-rating">${rating}</span>
-                </div>
-                <div class="movie-details">
-                    <p>${movie.Runtime}</p>
-                    <p>${movie.Genre}</p>
-                    <p>
-                    <i class="fa-solid fa-circle-minus add-remove-btn" id="add-btn" data-id=${movie.imdbID}></i>Remove</p>
-                </div>
-                <div class="movie-description">
-                    <p>${movie.Plot}
-                    </p>
-                </div>
-            </div>
-        </section>
-        `
-}
-
-function getEmptyWatchlistHtml() {
-    let html = `
-    <div class="explore-container">
-        <p class="empty-watchlist-text">Your watchlist is looking a little empty...</p>
-        <div class="empty-watchlist">
-            <a href="index.html"><i class="fa-solid fa-circle-plus add-remove-btn" data-page="index"></i></a>
-            <p>Let's add some movies!</p>
-        </div>
-    </div>
-    `
-    return html
-}
-
-function getMissingMovieHtml(){
-    return `
-    <div class="explore-container no-movies">
-        <p>Unable to find what you're looking for. Please try another search.</p>
-    </div>
-    `
-}
