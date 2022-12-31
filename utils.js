@@ -1,5 +1,17 @@
+import { watchlist } from "/index.js"
 
-function getMovieHtml(movie){
+
+function getMovieHtml(movie, status){
+    console.log(movie.Title, status)
+    let addedEl = ``
+    if (!status){
+        addedEl = `<p id="added">
+        <i class="fa-solid fa-circle-plus add-remove-btn" id="add-btn" data-id=${movie.imdbID}></i>Watchlist</p>`
+    } else {
+        addedEl = `
+        <p id="added" class="added">Added to Watchlist</p>
+        `
+    }
     const rating = movie.Ratings[0].Value.slice(0,3)
     return `
         <section class="movie-container">
@@ -15,8 +27,7 @@ function getMovieHtml(movie){
                 <div class="movie-details">
                     <p>${movie.Runtime}</p>
                     <p>${movie.Genre}</p>
-                    <p>
-                    <i class="fa-solid fa-circle-plus add-remove-btn" id="add-btn" data-id=${movie.imdbID}></i>Watchlist</p>
+                    ${addedEl}
                 </div>
                 <div class="movie-description">
                     <p>${movie.Plot}
