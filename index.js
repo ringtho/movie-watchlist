@@ -69,15 +69,17 @@ function handleRemoveFromWatchlistClick(id){
     location.reload()
 }
 
-async function getMovieById(id){
-    const res = await fetch(`https://www.omdbapi.com/?apikey=f379d678&i=${id}`)
-    const data = await res.json()
+async function getMovieByTitleSearch(searchText) {
+    const response = await fetch(`
+    https://www.omdbapi.com/?apikey=f379d678&s=${searchText}`)
+    const data = await response.json()
     return data
 }
 
-async function getMovieByTitleSearch(searchText) {
-    const response = await fetch(`https://www.omdbapi.com/?apikey=f379d678&s=${searchText}`)
-    const data = await response.json()
+async function getMovieById(id){
+    const res = await fetch(`
+    https://www.omdbapi.com/?apikey=f379d678&i=${id}`)
+    const data = await res.json()
     return data
 }
 
@@ -91,9 +93,10 @@ function renderWatchlist(){
     let html = ""
     if (watchlist.length){
         watchlist.forEach(movie => html += getWatchlistHtml(movie))
-        watchlistContainer.innerHTML = html
+        watchlistContainer ? watchlistContainer.innerHTML = html : ""
     } else {
-        watchlistContainer.innerHTML = getEmptyWatchlistHtml()
+        watchlistContainer ? 
+        watchlistContainer.innerHTML = getEmptyWatchlistHtml() : ""
     }  
 }
 renderWatchlist()
