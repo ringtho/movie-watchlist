@@ -40,7 +40,8 @@ async function handleSubmitBtnClick(){
             let html = ""
             data.Search.forEach( async searchedMovie=>{
                 const movie = await getMovieById(searchedMovie.imdbID)
-                html += getMovieHtml(movie, false)
+                const addedStatus = checkSearchMovieinWatchlist(movie)
+                html += getMovieHtml(movie, addedStatus)
                 mainContainer.innerHTML = html
             })
         } else {
@@ -78,6 +79,12 @@ async function getMovieByTitleSearch(searchText) {
     const response = await fetch(`https://www.omdbapi.com/?apikey=f379d678&s=${searchText}`)
     const data = await response.json()
     return data
+}
+
+function checkSearchMovieinWatchlist(movie){
+    let movieIdArr = []
+    watchlist.forEach(movie => movieIdArr.push(movie.imdbID))
+    return movieIdArr.includes(movie.imdbID)
 }
 
 function renderWatchlist(){
