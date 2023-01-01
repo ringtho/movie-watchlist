@@ -11,9 +11,6 @@ if (!watchlist){
     localStorage.setItem("movies", JSON.stringify(watchlist));
 }
 
-let moviesArr = []
-
-
 document.addEventListener('click', function(e){
     e.preventDefault()
     if (e.target.id === 'submit'){
@@ -38,20 +35,19 @@ async function handleSubmitBtnClick(){
     const searchText = document.getElementById('input-search').value
     if(searchText) {
         const data = await getMovieByTitleSearch(searchText)
-        console.log(data)
         if (data.Response === "True"){
-            for ( let searchedMovie of data.Search){
+            let html = ""
+            data.Search.forEach( async searchedMovie=>{
                 const movie = await getMovieById(searchedMovie.imdbID)
-                moviesArr.push(movie)
-            }
-            renderMovie(moviesArr)
+                html += getMovieHtml(movie, false)
+                mainContainer.innerHTML = html
+            })
         } else {
             mainContainer.innerHTML = getMissingMovieHtml()
         }      
     } else {
         alert ("Please provide a movie title in the input field")
     }
-    console.log(moviesArr.length)
 }
 
 async function handleAddToWatchlistClick(id){
@@ -78,20 +74,6 @@ async function getMovieByTitleSearch(searchText) {
     const response = await fetch(`https://www.omdbapi.com/?apikey=f379d678&s=${searchText}`)
     const data = await response.json()
     return data
-}
-
-function renderMovie(movieArray){
-    let html = ""
-    if (movieArray.length > 0){
-        movieArray.forEach(movie => {
-            let watchlistStatus
-            watchlist.forEach(item => {
-                watchlistStatus = item.imdbID === movie.imdbID
-            })
-            html += getMovieHtml(movie, watchlistStatus)
-        })
-        mainContainer.innerHTML = html
-    }
 }
 
 function renderWatchlist(){

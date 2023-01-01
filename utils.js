@@ -1,12 +1,10 @@
-import { watchlist } from "/index.js"
-
 
 function getMovieHtml(movie, status){
-    console.log(movie.Title, status)
     let addedEl = ``
     if (!status){
         addedEl = `<p id="added">
-        <i class="fa-solid fa-circle-plus add-remove-btn" id="add-btn" data-id=${movie.imdbID}></i>Watchlist</p>`
+        <i class="fa-solid fa-circle-plus add-remove-btn" id="add-btn" 
+        data-id=${movie.imdbID}></i>Watchlist</p>`
     } else {
         addedEl = `
         <p id="added" class="added">Added to Watchlist</p>
@@ -55,7 +53,8 @@ function getWatchlistHtml(movie){
                     <p>${movie.Runtime}</p>
                     <p>${movie.Genre}</p>
                     <p>
-                    <i class="fa-solid fa-circle-minus add-remove-btn" id="remove-btn" data-id=${movie.imdbID}></i>Remove</p>
+                    <i class="fa-solid fa-circle-minus add-remove-btn" id="remove-btn" 
+                    data-id=${movie.imdbID}></i>Remove</p>
                 </div>
                 <div class="movie-description">
                     <p>${movie.Plot}
@@ -71,7 +70,8 @@ function getEmptyWatchlistHtml() {
     <div class="explore-container">
         <p class="empty-watchlist-text">Your watchlist is looking a little empty...</p>
         <div class="empty-watchlist">
-            <a href="index.html"><i class="fa-solid fa-circle-plus add-remove-btn" data-page="index"></i></a>
+            <a href="index.html"><i class="fa-solid fa-circle-plus add-remove-btn" 
+            data-page="index"></i></a>
             <p>Let's add some movies!</p>
         </div>
     </div>
