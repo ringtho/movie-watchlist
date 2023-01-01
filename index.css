@@ -311,6 +311,12 @@ main {
     .movie-container {
         width: 100%;
     }
+
+    .explore-container {
+        border: 1px solid #121212;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 @media (min-width:391px) and (max-width: 500px) {
