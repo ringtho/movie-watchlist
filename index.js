@@ -5,6 +5,7 @@ import {
 const mainContainer = document.getElementById("container")
 const watchlistContainer = document.getElementById("watchlist-container")
 
+
 let watchlist = JSON.parse(localStorage.getItem("movies"))
 if (!watchlist){
     let watchlist = []
@@ -54,6 +55,9 @@ async function handleAddToWatchlistClick(id){
     const movie = await getMovieById(id)
     watchlist.unshift(movie)
     localStorage.setItem("movies", JSON.stringify(watchlist))
+    const addedEl = document.getElementById(movie.imdbID)
+    addedEl.textContent = "Added to Watchlist"
+    addedEl.classList.add("added")
 }
 
 function handleRemoveFromWatchlistClick(id){
@@ -86,5 +90,3 @@ function renderWatchlist(){
     }  
 }
 renderWatchlist()
-
-export { watchlist }

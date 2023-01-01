@@ -2,12 +2,12 @@
 function getMovieHtml(movie, status){
     let addedEl = ``
     if (!status){
-        addedEl = `<p id="added">
+        addedEl = `<p id=${movie.imdbID}>
         <i class="fa-solid fa-circle-plus add-remove-btn" id="add-btn" 
         data-id=${movie.imdbID}></i>Watchlist</p>`
     } else {
         addedEl = `
-        <p id="added" class="added">Added to Watchlist</p>
+        <p id=${movie.imdbID} class="added">Added to Watchlist</p>
         `
     }
     const rating = movie.Ratings[0].Value.slice(0,3)
